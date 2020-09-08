@@ -16,12 +16,14 @@ class Shop {
     }
     item.sellIn -= 1;
   }
+  isAgedBrie() {
+    return true;
+  }
   updateQuality() {
     const that = this;
     this.items.forEach( function(item) {
-      if (item.name === 'Sulfuras, Hand of Ragnaros') {
-        return item
-      }
+      if (item.name === 'Sulfuras, Hand of Ragnaros') return item
+
       if (that.isNormalItem(item)) {
         that.normalItemUpdate(item);
       } else {

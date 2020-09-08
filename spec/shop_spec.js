@@ -28,4 +28,13 @@ describe('Shop', function() {
       expect(shop.isNormalItem(itemDouble)).toBeFalse()
     });
   });
+
+  describe('isAgedBrie', function() {
+
+    it('returns true when item name is Aged Brie', function() {
+      const shop = new Shop();
+      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Aged Brie'});
+      expect(shop.isAgedBrie(itemDouble)).toBeTrue();
+    })
+  });
 });
