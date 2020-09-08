@@ -178,6 +178,22 @@ describe("Feature Tests", function() {
         expect(dayTwoItems[0].quality).toEqual(50);
         expect(dayTwoItems[0].quality).not.toEqual(51);
       })
+
+      it('quality cannot increase above 50 when sellIn less than 11 but greater than 5', function() {
+        const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 9, 48) ]);
+        const dayOneItems = gildedRose.updateQuality();
+        expect(dayOneItems[0].name).toEqual("Backstage passes to a TAFKAL80ETC concert");
+        expect(dayOneItems[0].sellIn).toEqual(8);
+        expect(dayOneItems[0].sellIn).not.toEqual(9);
+        expect(dayOneItems[0].quality).toEqual(50);
+        expect(dayOneItems[0].quality).not.toEqual(49);
+        const dayTwoItems = gildedRose.updateQuality();
+        expect(dayTwoItems[0].name).toEqual("Backstage passes to a TAFKAL80ETC concert");
+        expect(dayTwoItems[0].sellIn).toEqual(7);
+        expect(dayTwoItems[0].sellIn).not.toEqual(8);
+        expect(dayTwoItems[0].quality).toEqual(50);
+        expect(dayTwoItems[0].quality).not.toEqual(52);
+      })
     });
   });
 });
