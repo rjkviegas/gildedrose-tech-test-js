@@ -35,7 +35,7 @@ Feel free to make any changes to the UpdateQuality method and add any new code a
 |         Item        |             Special Characteristic         |
 |---------------------|--------------------------------------------|
 |      "Aged Brie"    |  Increase is Quality the older it gets     |
-|      "Sulfuras"     |    SellIN null, Quality does not decrease  |
+|      "Sulfuras"     |       Quality does not decrease            |
 | "Backstage passes"  |   Quality increases as SellIn decreases    |
 | "Backstage passes"  |   When SellIn <= 10, Quality += 2          |
 | "Backstage passes"  |   When SellIn <= 5, Quality += 3           |

@@ -64,5 +64,21 @@ describe("Gilded Rose", function() {
       expect(dayTwoItems[0].quality).toEqual(50);
       expect(dayTwoItems[0].quality).not.toEqual(51);
     });
+
+    it("Sulfaras properties are constant", function() {
+      const gildedRose = new Shop([ new Item("Sulfuras, Hand of Ragnaros", 0, 80) ]);
+      const dayOneItems = gildedRose.updateQuality();
+      expect(dayOneItems[0].name).toEqual("Sulfuras, Hand of Ragnaros");
+      expect(dayOneItems[0].sellIn).toEqual(0);
+      expect(dayOneItems[0].sellIn).not.toEqual(-1);
+      expect(dayOneItems[0].quality).toEqual(80);
+      expect(dayOneItems[0].quality).not.toEqual(79);
+      const dayTwoItems = gildedRose.updateQuality();
+      expect(dayTwoItems[0].name).toEqual("Sulfuras, Hand of Ragnaros");
+      expect(dayTwoItems[0].sellIn).toEqual(0);
+      expect(dayTwoItems[0].sellIn).not.toEqual(-2);
+      expect(dayTwoItems[0].quality).toEqual(80);
+      expect(dayTwoItems[0].quality).not.toEqual(78);
+    });
   });
 });
