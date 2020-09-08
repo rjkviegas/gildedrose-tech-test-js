@@ -36,5 +36,11 @@ describe('Shop', function() {
       const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Aged Brie'});
       expect(shop.isAgedBrie(itemDouble)).toBeTrue();
     })
+
+    it('returns false when item name is not Aged Brie', function() {
+      const shop = new Shop();
+      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'itemDouble'});
+      expect(shop.isAgedBrie(itemDouble)).toBeFalse();
+    })
   });
 });

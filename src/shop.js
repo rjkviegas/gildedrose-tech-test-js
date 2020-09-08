@@ -16,8 +16,9 @@ class Shop {
     }
     item.sellIn -= 1;
   }
-  isAgedBrie() {
-    return true;
+  isAgedBrie(item) {
+    if (item.name === 'Aged Brie') return true;
+    return false;
   }
   updateQuality() {
     const that = this;
