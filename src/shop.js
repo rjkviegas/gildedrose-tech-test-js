@@ -26,6 +26,10 @@ class Shop {
     }
     item.sellIn -= 1;
   }
+  isBackstagePass(item) {
+    if (item.name === 'Backstage passes to a TAFKAL80ETC concert') return true;
+    return false;
+  }
   updateQuality() {
     const that = this;
     this.items.forEach( function(item) {
