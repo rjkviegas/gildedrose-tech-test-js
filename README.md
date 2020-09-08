@@ -49,5 +49,5 @@ So we know the value of our inventory
 
 As the inn owner
 We want the quality of a 'conjured' item to degrade at twice the normal rate
-So we knwo the true value of the 'conjured' item
+So we know the true value of the 'conjured' item
 ```

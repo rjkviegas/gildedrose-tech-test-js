@@ -102,7 +102,7 @@ describe("Gilded Rose", function() {
         expect(items[0].quality).not.toEqual(19);
       });
 
-      it("quality increases twice as fast when sellIn less than 10", function() {
+      it("quality increases twice as fast when sellIn less than or equal to 10", function() {
         const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 11, 20) ]);
         const dayOneItems = gildedRose.updateQuality();
         expect(dayOneItems[0].name).toEqual("Backstage passes to a TAFKAL80ETC concert");
@@ -123,7 +123,7 @@ describe("Gilded Rose", function() {
         expect(dayThreeItems[0].quality).toEqual(25);
         expect(dayThreeItems[0].quality).not.toEqual(23);
       });
-      it("quality increases three times as fast when sellIn less than 5", function() {
+      it("quality increases three times as fast when sellIn less than or equal to 5", function() {
         const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20) ]);
         const dayOneItems = gildedRose.updateQuality();
         expect(dayOneItems[0].name).toEqual("Backstage passes to a TAFKAL80ETC concert");
