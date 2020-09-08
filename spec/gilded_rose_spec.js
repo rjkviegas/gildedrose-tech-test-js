@@ -80,5 +80,15 @@ describe("Gilded Rose", function() {
       expect(dayTwoItems[0].quality).toEqual(80);
       expect(dayTwoItems[0].quality).not.toEqual(78);
     });
+
+    it("Backstage passes quality increase as sellIn decreases", function() {
+      const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20) ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].name).toEqual("Backstage passes to a TAFKAL80ETC concert");
+      expect(items[0].sellIn).toEqual(14);
+      expect(items[0].sellIn).not.toEqual(15);
+      expect(items[0].quality).toEqual(21);
+      expect(items[0].quality).not.toEqual(19);
+    });
   });
 });
