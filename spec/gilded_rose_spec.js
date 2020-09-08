@@ -1,7 +1,7 @@
-const {Shop} = require('../src/shop.js');
-const {Item} = require('../src/item.js');
+const {Item} = require('../src/item');
+const {Shop} = require('../src/shop');
 
-describe("Gilded Rose", function() {
+describe("Feature Tests", function() {
 
   describe("#updateQuality", function() {
 

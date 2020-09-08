@@ -1,4 +1,4 @@
-const {Shop} = require('../src/shop.js');
+const {Shop} = require('../src/shop');
 
 describe('Shop', function() {
 

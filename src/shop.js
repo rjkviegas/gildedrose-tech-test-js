@@ -8,6 +8,14 @@ class Shop {
     if (item.name === 'Backstage passes to a TAFKAL80ETC concert') return false;
     return true;
   }
+  normalItemUpdate(item) {
+    if ((item.quality >= 2) && (item.sellIn < 0)) {
+      item.quality -= 2;
+    } if (item.quality > 0) {
+      item.quality -= 1;
+    }
+    item.sellIn -= 1;
+  }
   updateQuality() {
     const that = this;
     this.items.forEach( function(item) {
@@ -15,9 +23,7 @@ class Shop {
         return item
       }
       if (that.isNormalItem(item)) {
-        if (item.quality > 0) {
-            item.quality -= 1;
-        }
+        that.normalItemUpdate(item);
       } else {
         if (item.quality < 50) {
           item.quality += 1;
@@ -34,8 +40,9 @@ class Shop {
             }
           }
         }
+        item.sellIn -= 1;
       }
-      item.sellIn -= 1;
+      
       if (item.sellIn < 0) {
         if (item.name !== 'Aged Brie') {
           if (item.name !== 'Backstage passes to a TAFKAL80ETC concert') {
