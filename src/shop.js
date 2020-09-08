@@ -20,6 +20,12 @@ class Shop {
     if (item.name === 'Aged Brie') return true;
     return false;
   }
+  agedBrieUpdate(item) {
+    if (item.quality < 50) {
+      item.quality += 1;
+    }
+    item.sellIn -= 1;
+  }
   updateQuality() {
     const that = this;
     this.items.forEach( function(item) {
@@ -27,6 +33,8 @@ class Shop {
 
       if (that.isNormalItem(item)) {
         that.normalItemUpdate(item);
+      } else if (that.isAgedBrie(item)) {
+          that.agedBrieUpdate(item);
       } else {
         if (item.quality < 50) {
           item.quality += 1;
