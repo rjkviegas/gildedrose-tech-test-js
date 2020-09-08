@@ -2,7 +2,8 @@ class Shop {
   constructor(items=[]){
     this.items = items;
   }
-  doesQualityDecreaseDaily(item) {
+  isNormalItem(item) {
+    if (item.name === 'Sulfuras, Hand of Ragnaros') return false;
     if (item.name === 'Aged Brie') return false;
     if (item.name === 'Backstage passes to a TAFKAL80ETC concert') return false;
     return true;
@@ -13,7 +14,7 @@ class Shop {
       if (item.name === 'Sulfuras, Hand of Ragnaros') {
         return item
       }
-      if (that.doesQualityDecreaseDaily(item)) {
+      if (that.isNormalItem(item)) {
         if (item.quality > 0) {
             item.quality -= 1;
         }

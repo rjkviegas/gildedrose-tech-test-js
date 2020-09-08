@@ -1,1 +1,3 @@
 /node_modules/
+/spec/item_identifier_spec.js
+/src/item_identifier.js
