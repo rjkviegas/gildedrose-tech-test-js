@@ -39,7 +39,7 @@ describe("Gilded Rose", function() {
       expect(dayTwoItems[0].quality).not.toEqual(2);
     });
 
-    it('Aged Brie quality increases as days increase', function() {
+    it("Aged Brie quality increases as days increase", function() {
       const gildedRose = new Shop([ new Item("Aged Brie", 2, 0) ]);
       const items = gildedRose.updateQuality();
       expect(items[0].name).toEqual('Aged Brie')
@@ -48,6 +48,21 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(1)
       expect(items[0].quality).not.toEqual(0)
     });
-  });
 
+    it("Aged Brie quality cannot increase over 50", function() {
+      const gildedRose = new Shop([ new Item("Aged Brie", 2, 49) ]);
+      const dayOneItems = gildedRose.updateQuality();
+      expect(dayOneItems[0].name).toEqual("Aged Brie");
+      expect(dayOneItems[0].sellIn).toEqual(1);
+      expect(dayOneItems[0].sellIn).not.toEqual(2);
+      expect(dayOneItems[0].quality).toEqual(50);
+      expect(dayOneItems[0].quality).not.toEqual(49);
+      const dayTwoItems = gildedRose.updateQuality();
+      expect(dayTwoItems[0].name).toEqual("Aged Brie");
+      expect(dayTwoItems[0].sellIn).toEqual(0);
+      expect(dayTwoItems[0].sellIn).not.toEqual(1);
+      expect(dayTwoItems[0].quality).toEqual(50);
+      expect(dayTwoItems[0].quality).not.toEqual(51);
+    });
+  });
 });
