@@ -90,5 +90,27 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toEqual(21);
       expect(items[0].quality).not.toEqual(19);
     });
+
+    it("Backstage passes quality increases twice as fast when sellIn <= 10", function() {
+      const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 11, 20) ]);
+      const dayOneItems = gildedRose.updateQuality();
+      expect(dayOneItems[0].name).toEqual("Backstage passes to a TAFKAL80ETC concert");
+      expect(dayOneItems[0].sellIn).toEqual(10);
+      expect(dayOneItems[0].sellIn).not.toEqual(11);
+      expect(dayOneItems[0].quality).toEqual(21);
+      expect(dayOneItems[0].quality).not.toEqual(20);
+      const dayTwoItems = gildedRose.updateQuality();
+      expect(dayTwoItems[0].name).toEqual("Backstage passes to a TAFKAL80ETC concert");
+      expect(dayTwoItems[0].sellIn).toEqual(9);
+      expect(dayTwoItems[0].sellIn).not.toEqual(10);
+      expect(dayTwoItems[0].quality).toEqual(23);
+      expect(dayTwoItems[0].quality).not.toEqual(22);
+      const dayThreeItems = gildedRose.updateQuality();
+      expect(dayThreeItems[0].name).toEqual("Backstage passes to a TAFKAL80ETC concert");
+      expect(dayThreeItems[0].sellIn).toEqual(8);
+      expect(dayThreeItems[0].sellIn).not.toEqual(9);
+      expect(dayThreeItems[0].quality).toEqual(25);
+      expect(dayThreeItems[0].quality).not.toEqual(23);
+    });
   });
 });
