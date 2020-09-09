@@ -13,10 +13,6 @@ class Shop {
     }
     item.sellIn -= 1;
   }
-  isAgedBrie(item) {
-    if (item.name === 'Aged Brie') return true;
-    return false;
-  }
   agedBrieUpdate(item) {
     if (item.quality < 50) {
       item.quality += 1;
@@ -49,7 +45,7 @@ class Shop {
 
       if (that.itemIdentifier.isNormalItem(item)) {
         that.normalItemUpdate(item);
-      } else if (that.isAgedBrie(item)) {
+      } else if (that.itemIdentifier.isAgedBrie(item)) {
         that.agedBrieUpdate(item);
       } else if (that.isBackstagePass(item)) {
         that.backstagePassUpdate(item);

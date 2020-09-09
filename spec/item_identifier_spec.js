@@ -28,4 +28,19 @@ describe('ItemIdentifier', function() {
       expect(itemIdentifier.isNormalItem(itemDouble)).toBeFalse();
     });
   });
+
+  describe('isAgedBrie', function() {
+
+    it('returns true when item name is Aged Brie', function() {
+      const itemIdentifier = new ItemIdentifier();
+      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Aged Brie'});
+      expect(itemIdentifier.isAgedBrie(itemDouble)).toBeTrue();
+    })
+
+    it('returns false when item name is not Aged Brie', function() {
+      const itemIdentifier = new ItemIdentifier();
+      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'itemDouble'});
+      expect(itemIdentifier.isAgedBrie(itemDouble)).toBeFalse();
+    })
+  });
 });
