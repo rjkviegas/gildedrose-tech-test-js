@@ -23,6 +23,7 @@ class Shop {
     return that.items;
   }
 }
+
 module.exports = {
   Shop,
 }

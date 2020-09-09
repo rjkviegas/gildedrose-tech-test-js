@@ -13,6 +13,9 @@ class ItemIdentifier {
   isItem(itemName, item) {
     return item.name === itemName;
   }
+  isConjuredItem(item) {
+    return item.name.includes('Conjured');
+  }
 }
 
 module.exports = {

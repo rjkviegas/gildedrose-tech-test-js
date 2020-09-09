@@ -1,4 +1,4 @@
 /node_modules/
 /lib/
 SpecRunner.html
-
+/spec/item_updater_spec.js

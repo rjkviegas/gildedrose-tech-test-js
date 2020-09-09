@@ -43,4 +43,19 @@ describe('ItemIdentifier', function() {
       expect(itemIdentifier.isItem('Sulfuras, Hand of Ragnaros', itemDouble)).toBeFalse();
     })
   });
+  
+  describe('isConjuredItem', function() {
+
+    it("returns true when item name includes 'conjured'", function() {
+      const itemIdentifier = new ItemIdentifier();
+      const conjuredItemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Conjured Mana Cake'});
+      expect(itemIdentifier.isConjuredItem(conjuredItemDouble)).toBeTrue();
+    });
+
+    it("returns false when item does not include 'conjured'", function() {
+      const itemIdentifier = new ItemIdentifier();
+      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Mana Cake'});
+      expect(itemIdentifier.isConjuredItem(itemDouble)).toBeFalse();
+    });
+  });
 });
