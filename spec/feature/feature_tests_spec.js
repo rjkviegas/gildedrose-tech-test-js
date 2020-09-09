@@ -212,17 +212,53 @@ describe("Feature Tests", function() {
       })
     });
 
-    describe('Conjured items', function() {
+    describe('Conjured Item', function() {
 
-      it('reduces sellIn by 1 and quality by 2', function() {
-        const gildedRose = new Shop([ new Item("Conjured Mana Cake", 40, 35) ]);
-        const items = gildedRose.updateQuality();
-        expect(items[0].name).toEqual("Conjured Mana Cake");
-        expect(items[0].sellIn).toEqual(39);
-        expect(items[0].sellIn).not.toEqual(40);
-        expect(items[0].quality).toEqual(33);
-        expect(items[0].quality).not.toEqual(34);
-      })
+      it("reduces sellIn by 1 and quality by 2", function() {
+        const gildedRose = new Shop([ new Item("Conjured Mana Cake", 15, 20) ]);
+        const dayOneItems = gildedRose.updateQuality();
+        expect(dayOneItems[0].sellIn).toEqual(14);
+        expect(dayOneItems[0].sellIn).not.toEqual(15);
+        expect(dayOneItems[0].quality).toEqual(18);
+        expect(dayOneItems[0].quality).not.toEqual(19);
+      });
+  
+      it("cannot reduce quality less than 0", function() {
+        const gildedRose = new Shop([ new Item("Conjured Mana Cake", 14, 2) ]);
+        const dayOneItems = gildedRose.updateQuality();
+        expect(dayOneItems[0].sellIn).toEqual(13);
+        expect(dayOneItems[0].sellIn).not.toEqual(14);
+        expect(dayOneItems[0].quality).toEqual(0);
+        expect(dayOneItems[0].quality).not.toEqual(1);
+        const dayTwoItems = gildedRose.updateQuality();
+        expect(dayTwoItems[0].sellIn).toEqual(12);
+        expect(dayTwoItems[0].sellIn).not.toEqual(13);
+        expect(dayTwoItems[0].quality).toEqual(0);
+        expect(dayTwoItems[0].quality).not.toEqual(-2);
+      });
+  
+      it("quality degrades at twice the rate once sellIn less than 0", function() {
+        const gildedRose = new Shop([ new Item("Conjured Mana Cake", 1, 32) ]);
+        const dayOneItems = gildedRose.updateQuality();
+        expect(dayOneItems[0].sellIn).toEqual(0);
+        expect(dayOneItems[0].sellIn).not.toEqual(1);
+        expect(dayOneItems[0].quality).toEqual(30);
+        expect(dayOneItems[0].quality).not.toEqual(32);
+        const dayTwoItems = gildedRose.updateQuality();
+        expect(dayTwoItems[0].sellIn).toEqual(-1);
+        expect(dayTwoItems[0].sellIn).not.toEqual(0);
+        expect(dayTwoItems[0].quality).toEqual(26);
+        expect(dayTwoItems[0].quality).not.toEqual(28);
+      });
+  
+      it('returns quality equal to 0 when receives item with quality equalling 1', function() {
+        const gildedRose = new Shop([ new Item("Conjured Mana Cake", 27, 1) ]);
+        const dayOneItems = gildedRose.updateQuality();
+        expect(dayOneItems[0].sellIn).toEqual(26);
+        expect(dayOneItems[0].sellIn).not.toEqual(27);
+        expect(dayOneItems[0].quality).toEqual(0);
+        expect(dayOneItems[0].quality).not.toEqual(-1);
+      });
     });
   });
 });
