@@ -15,5 +15,11 @@ describe('ItemIdentifier', function() {
       const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Sulfuras, Hand of Ragnaros'});
       expect(itemIdentifier.isNormalItem(itemDouble)).toBeFalse();
     });
+
+    it('returns false for Aged Brie', function() {
+      const itemIdentifier = new ItemIdentifier();
+      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Aged Brie'});
+      expect(itemIdentifier.isNormalItem(itemDouble)).toBeFalse();
+    });
   });
 });
