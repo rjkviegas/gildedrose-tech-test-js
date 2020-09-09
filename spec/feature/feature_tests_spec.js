@@ -1,5 +1,5 @@
-const {Item} = require('../src/item');
-const {Shop} = require('../src/shop');
+const {Item} = require('../../src/item');
+const {Shop} = require('../../src/shop');
 
 describe("Feature Tests", function() {
 
