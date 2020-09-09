@@ -211,5 +211,18 @@ describe("Feature Tests", function() {
         expect(dayTwoItems[0].quality).not.toEqual(53);
       })
     });
+
+    describe('Conjured items', function() {
+
+      it('reduces sellIn by 1 and quality by 2', function() {
+        const gildedRose = new Shop([ new Item("Conjured Mana Cake", 40, 35) ]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].name).toEqual("Conjured Mana Cake");
+        expect(items[0].sellIn).toEqual(39);
+        expect(items[0].sellIn).not.toEqual(40);
+        expect(items[0].quality).toEqual(33);
+        expect(items[0].quality).not.toEqual(34);
+      })
+    });
   });
 });

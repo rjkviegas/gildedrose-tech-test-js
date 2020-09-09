@@ -12,7 +12,9 @@ class Shop {
     this.items.forEach( function(item) {
       if (that.itemIdentifier.isItem('Sulfuras, Hand of Ragnaros', item)) return item
 
-      if (that.itemIdentifier.isNormalItem(item)) {
+      if (that.itemIdentifier.isConjuredItem(item)) {
+        that.itemUpdater.conjuredItemUpdate(item);
+      } else if (that.itemIdentifier.isNormalItem(item)) {
         that.itemUpdater.normalItemUpdate(item);
       } else if (that.itemIdentifier.isItem('Aged Brie', item)) {
         that.itemUpdater.agedBrieUpdate(item);
