@@ -1,12 +1,9 @@
+const { ItemIdentifier } = require("./item_identifier");
+
 class Shop {
-  constructor(items=[]){
+  constructor(items=[], itemIdentifier = ItemIdentifier){
     this.items = items;
-  }
-  isNormalItem(item) {
-    if (item.name === 'Sulfuras, Hand of Ragnaros') return false;
-    if (item.name === 'Aged Brie') return false;
-    if (item.name === 'Backstage passes to a TAFKAL80ETC concert') return false;
-    return true;
+    this.itemIdentifier = new itemIdentifier;
   }
   normalItemUpdate(item) {
     if ((item.quality >= 2) && (item.sellIn <= 0)) {
@@ -50,7 +47,7 @@ class Shop {
     this.items.forEach( function(item) {
       if (item.name === 'Sulfuras, Hand of Ragnaros') return item
 
-      if (that.isNormalItem(item)) {
+      if (that.itemIdentifier.isNormalItem(item)) {
         that.normalItemUpdate(item);
       } else if (that.isAgedBrie(item)) {
         that.agedBrieUpdate(item);

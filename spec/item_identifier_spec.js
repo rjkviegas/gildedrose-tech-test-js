@@ -21,5 +21,11 @@ describe('ItemIdentifier', function() {
       const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Aged Brie'});
       expect(itemIdentifier.isNormalItem(itemDouble)).toBeFalse();
     });
+
+    it('returns false for Backstage pass', function() {
+      const itemIdentifier = new ItemIdentifier();
+      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Backstage passes to a TAFKAL80ETC concert'});
+      expect(itemIdentifier.isNormalItem(itemDouble)).toBeFalse();
+    });
   });
 });
