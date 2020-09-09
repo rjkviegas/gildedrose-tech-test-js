@@ -31,10 +31,10 @@ class ItemUpdater {
     item.sellIn -= 1;
   }
   conjuredItemUpdate(item) {
-    if (item.quality >= 2) {
+    if ((item.quality >= 4) && (item.sellIn <= 0)) {
+      item.quality -= 4;
+    } else if (item.quality >= 2) {
       item.quality -= 2;
-    } else if (item.quality >= 1) {
-      item.quality -= 1;
     }
     item.sellIn -= 1;
   }
