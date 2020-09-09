@@ -29,33 +29,18 @@ describe('ItemIdentifier', function() {
     });
   });
 
-  describe('isAgedBrie', function() {
+  describe('isItem', function() {
 
-    it('returns true when item name is Aged Brie', function() {
+    it('returns true when item name matches first argument', function() {
       const itemIdentifier = new ItemIdentifier();
-      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Aged Brie'});
-      expect(itemIdentifier.isAgedBrie(itemDouble)).toBeTrue();
+      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Sulfuras, Hand of Ragnaros'});
+      expect(itemIdentifier.isItem('Sulfuras, Hand of Ragnaros', itemDouble)).toBeTrue();
     })
 
-    it('returns false when item name is not Aged Brie', function() {
+    it('returns false when item name does not match first argument', function() {
       const itemIdentifier = new ItemIdentifier();
       const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'itemDouble'});
-      expect(itemIdentifier.isAgedBrie(itemDouble)).toBeFalse();
-    })
-  });
-
-  describe('isBackstagePass', function() {
-
-    it('returns true when item name is Backstage passes to a TAFKAL80ETC concert', function() {
-      const itemIdentifier = new ItemIdentifier();
-      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Backstage passes to a TAFKAL80ETC concert'});
-      expect(itemIdentifier.isBackstagePass(itemDouble)).toBeTrue();
-    })
-
-    it('returns false when item name is not Backstage passes to a TAFKAL80ETC concert', function() {
-      const itemIdentifier = new ItemIdentifier();
-      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'itemDouble'});
-      expect(itemIdentifier.isBackstagePass(itemDouble)).toBeFalse();
+      expect(itemIdentifier.isItem('Sulfuras, Hand of Ragnaros', itemDouble)).toBeFalse();
     })
   });
 });

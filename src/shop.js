@@ -3,7 +3,7 @@ const { ItemIdentifier } = require("./item_identifier");
 class Shop {
   constructor(items=[], itemIdentifier = ItemIdentifier){
     this.items = items;
-    this.itemIdentifier = new itemIdentifier;
+    this.itemIdentifier = new itemIdentifier();
   }
   normalItemUpdate(item) {
     if ((item.quality >= 2) && (item.sellIn <= 0)) {
@@ -37,13 +37,13 @@ class Shop {
   updateQuality() {
     const that = this;
     this.items.forEach( function(item) {
-      if (item.name === 'Sulfuras, Hand of Ragnaros') return item
+      if (that.itemIdentifier.isItem('Sulfuras, Hand of Ragnaros', item)) return item
 
       if (that.itemIdentifier.isNormalItem(item)) {
         that.normalItemUpdate(item);
-      } else if (that.itemIdentifier.isAgedBrie(item)) {
+      } else if (that.itemIdentifier.isItem('Aged Brie', item)) {
         that.agedBrieUpdate(item);
-      } else if (that.itemIdentifier.isBackstagePass(item)) {
+      } else if (that.itemIdentifier.isItem('Backstage passes to a TAFKAL80ETC concert', item)) {
         that.backstagePassUpdate(item);
       }
     })

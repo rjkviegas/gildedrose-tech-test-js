@@ -1,19 +1,17 @@
 class ItemIdentifier {
-  constructor() {}
+  constructor() {
+    this.specialItems = [
+      'Sulfuras, Hand of Ragnaros',
+      'Aged Brie',
+      'Backstage passes to a TAFKAL80ETC concert'
+    ]
+  }
 
   isNormalItem(item) {
-    if (item.name === 'Sulfuras, Hand of Ragnaros') return false;
-    if (item.name === 'Aged Brie') return false;
-    if (item.name === 'Backstage passes to a TAFKAL80ETC concert') return false;
-    return true;
+    return !this.specialItems.includes(item.name);
   }
-  isAgedBrie(item) {
-    if (item.name === 'Aged Brie') return true;
-    return false;
-  }
-  isBackstagePass(item) {
-    if (item.name === 'Backstage passes to a TAFKAL80ETC concert') return true;
-    return false;
+  isItem(itemName, item) {
+    return item.name === itemName;
   }
 }
 
