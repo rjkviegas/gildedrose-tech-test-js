@@ -35,6 +35,8 @@ class ItemUpdater {
       item.quality -= 4;
     } else if (item.quality >= 2) {
       item.quality -= 2;
+    } else if (item.quality === 1) {
+      item.quality = 0;
     }
     item.sellIn -= 1;
   }

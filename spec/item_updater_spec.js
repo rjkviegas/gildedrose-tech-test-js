@@ -55,5 +55,19 @@ describe('ItemUpdater', function() {
       expect(conjuredItemDouble.quality).toEqual(26);
       expect(conjuredItemDouble.quality).not.toEqual(28);
     });
+
+    it('returns quality equal to 0 when receives item with quality equalling 1', function() {
+      const itemUpdater = new ItemUpdater();
+      const conjuredItemDouble = {
+        name: "Conjured Mana Cake",
+        sellIn: 27,
+        quality: 1
+      };
+      itemUpdater.conjuredItemUpdate(conjuredItemDouble);
+      expect(conjuredItemDouble.sellIn).toEqual(26);
+      expect(conjuredItemDouble.sellIn).not.toEqual(27);
+      expect(conjuredItemDouble.quality).toEqual(0);
+      expect(conjuredItemDouble.quality).not.toEqual(-1);
+    });
   });
 });
