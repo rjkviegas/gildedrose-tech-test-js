@@ -1,7 +1,8 @@
 class ItemIdentifier {
   constructor() {}
 
-  isNormalItem() {
+  isNormalItem(item) {
+    if (item.name === 'Sulfuras, Hand of Ragnaros') return false
     return true;
   }
 }
