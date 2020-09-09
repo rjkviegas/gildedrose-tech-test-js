@@ -30,6 +30,10 @@ class ItemUpdater {
     }
     item.sellIn -= 1;
   }
+  conjuredItemUpdate(item) {
+    item.quality -= 2;
+    item.sellIn -= 1;
+  }
 }
 
 module.exports = {
