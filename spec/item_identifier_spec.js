@@ -43,4 +43,19 @@ describe('ItemIdentifier', function() {
       expect(itemIdentifier.isAgedBrie(itemDouble)).toBeFalse();
     })
   });
+
+  describe('isBackstagePass', function() {
+
+    it('returns true when item name is Backstage passes to a TAFKAL80ETC concert', function() {
+      const itemIdentifier = new ItemIdentifier();
+      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'Backstage passes to a TAFKAL80ETC concert'});
+      expect(itemIdentifier.isBackstagePass(itemDouble)).toBeTrue();
+    })
+
+    it('returns false when item name is not Backstage passes to a TAFKAL80ETC concert', function() {
+      const itemIdentifier = new ItemIdentifier();
+      const itemDouble = jasmine.createSpyObj('itemDouble', {}, {name: 'itemDouble'});
+      expect(itemIdentifier.isBackstagePass(itemDouble)).toBeFalse();
+    })
+  });
 });

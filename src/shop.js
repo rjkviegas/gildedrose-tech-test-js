@@ -19,10 +19,6 @@ class Shop {
     }
     item.sellIn -= 1;
   }
-  isBackstagePass(item) {
-    if (item.name === 'Backstage passes to a TAFKAL80ETC concert') return true;
-    return false;
-  }
   backstagePassUpdate(item) {
     if (item.quality <= 49) {
       item.quality += 1;
@@ -47,7 +43,7 @@ class Shop {
         that.normalItemUpdate(item);
       } else if (that.itemIdentifier.isAgedBrie(item)) {
         that.agedBrieUpdate(item);
-      } else if (that.isBackstagePass(item)) {
+      } else if (that.itemIdentifier.isBackstagePass(item)) {
         that.backstagePassUpdate(item);
       }
     })
