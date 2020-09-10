@@ -1,5 +1,5 @@
-const { ItemIdentifier } = require("./item_identifier");
-const { ItemQualityUpdater } = require("./item_quality_updater")
+const { ItemIdentifier } = require('./item_identifier');
+const { ItemQualityUpdater } = require('./item_quality_updater');
 
 class Shop {
   constructor(items=[], itemIdentifier=ItemIdentifier, itemQualityUpdater=ItemQualityUpdater) {
@@ -7,10 +7,11 @@ class Shop {
     this.itemIdentifier = new itemIdentifier();
     this.itemQualityUpdater = new itemQualityUpdater();
   }
+
   updateQuality() {
     const that = this;
-    this.items.forEach( function(item) {
-      if (that.itemIdentifier.isItem('Sulfuras, Hand of Ragnaros', item)) return item
+    this.items.forEach(function(item) {
+      if (that.itemIdentifier.isItem('Sulfuras, Hand of Ragnaros', item)) return item;
 
       if (that.itemIdentifier.isConjuredItem(item)) {
         that.itemQualityUpdater.updateConjuredItem(item);
@@ -22,11 +23,11 @@ class Shop {
         that.itemQualityUpdater.updateBackstagePass(item);
       }
       item.sellIn -= 1;
-    })
+    });
     return that.items;
   }
 }
 
 module.exports = {
   Shop,
-}
+};

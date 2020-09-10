@@ -19,21 +19,24 @@ class ItemQualityUpdater {
       that.decreaseQualityBy(that.STANDARD_DECREMENT, item);
     }
   }
+
   updateAgedBrie(item) {
     const that = this;
     if (item.quality < that.UPPER_LIMIT) { that.increaseQualityBy(that.STANDARD_INCREMENT, item); }
   }
+
   updateBackstagePass(item) {
     const that = this;
-    if (item.sellIn <= 0) return item.quality = that.LOWER_LIMIT;
+    if (item.sellIn <= 0) return (item.quality = that.LOWER_LIMIT);
     if (item.quality < that.UPPER_LIMIT) { that.increaseQualityBy(that.STANDARD_INCREMENT, item); }
-    if (item.sellIn <= that.BACKSTAGE_PASS_SELL_IN_BAND_ONE && item.quality < that.UPPER_LIMIT) { 
+    if (item.sellIn <= that.BACKSTAGE_PASS_SELL_IN_BAND_ONE && item.quality < that.UPPER_LIMIT) {
       that.increaseQualityBy(that.STANDARD_INCREMENT, item);
     } 
     if (item.sellIn <= that.BACKSTAGE_PASS_SELL_IN_BAND_TWO && item.quality < that.UPPER_LIMIT) {
       that.increaseQualityBy(that.STANDARD_INCREMENT, item);
     }
   }
+
   updateConjuredItem(item) {
     const that = this;
     if (item.sellIn <= 0 && item.quality >= that.CONJURED_PAST_SELL_IN_DECREMENT) {
@@ -44,9 +47,11 @@ class ItemQualityUpdater {
       item.quality = that.LOWER_LIMIT;
     }
   }
+
   decreaseQualityBy(decrement, item) {
     item.quality -= decrement;
   }
+
   increaseQualityBy(increment, item) {
     item.quality += increment;
   }
@@ -54,4 +59,4 @@ class ItemQualityUpdater {
 
 module.exports = {
   ItemQualityUpdater,
-}
+};
