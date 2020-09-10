@@ -19,6 +19,25 @@ We have recently signed a supplier of conjured items. This requires an update to
 “Conjured” items degrade in Quality twice as fast as normal items
 Feel free to make any changes to the UpdateQuality method and add any new code as long as everything still works correctly. However, do not alter the Item class or Items property as those belong to the goblin in the corner who will insta-rage and one-shot you as he doesn’t believe in shared code ownership (you can make the UpdateQuality method and Items property static if you like, we’ll cover for you)."*
 
+### Set Up
+Clone the repository and install Jasmine using npm
+```
+npm install --save-dev jasmine
+```
+### Testing
+Run feature tests:
+```
+npx jasmine ./spec/feature/feature_tests_spec.js
+```
+Run texttest_fixture
+```
+npx jasmine ./spec/texttest_fixture_spec.js
+```
+Run unit tests:
+```
+npx jasmine ,/spec/item_identifier_spec.js
+```
+
 ### Properties of Existing System
 
 #### Item Properties
