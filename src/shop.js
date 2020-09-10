@@ -15,11 +15,11 @@ class Shop {
 
       if (that.itemIdentifier.isConjuredItem(item)) {
         that.itemQualityUpdater.updateConjuredItem(item);
-      } else if (that.itemIdentifier.isNormalItem(item)) {
+      } else if (that.itemIdentifier.isStandardItem(item)) {
         that.itemQualityUpdater.updateStandardItem(item);
       } else if (that.itemIdentifier.isItem('Aged Brie', item)) {
         that.itemQualityUpdater.updateAgedBrie(item);
-      } else if (that.itemIdentifier.isItem('Backstage passes to a TAFKAL80ETC concert', item)) {
+      } else if (that.itemIdentifier.isItemA('Backstage pass', item)) {
         that.itemQualityUpdater.updateBackstagePass(item);
       }
       item.sellIn -= 1;

@@ -7,16 +7,20 @@ class ItemIdentifier {
     ];
   }
 
-  isNormalItem(item) {
+  isStandardItem(item) {
     return !this.specialItems.includes(item.name);
+  }
+
+  isConjuredItem(item) {
+    return item.name.includes('Conjured');
   }
 
   isItem(itemName, item) {
     return item.name === itemName;
   }
 
-  isConjuredItem(item) {
-    return item.name.includes('Conjured');
+  isItemA(item_keyword, item) {
+    return item.name.includes(item_keyword)
   }
 }
 
