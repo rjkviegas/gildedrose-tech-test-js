@@ -1,31 +1,54 @@
 class ItemQualityUpdater {
-  constructor() {}
+  constructor() {
+    this.UPPER_LIMIT = 50;
+    this.LOWER_LIMIT = 0;
+    this.STANDARD_INCREMENT = 1;
+    this.STANDARD_DECREMENT = 1;
+    this.PAST_SELL_IN_DECREMENT = 2;
+    this.CONJURED_STANDARD_DECREMENT = 2;
+    this.CONJURED_PAST_SELL_IN_DECREMENT = 4;
+    this.BACKSTAGE_PASS_SELL_IN_BAND_ONE = 10;
+    this.BACKSTAGE_PASS_SELL_IN_BAND_TWO = 5;
+  }
 
-  normalItemUpdate(item) {
-    if ((item.quality >= 2) && (item.sellIn <= 0)) {
-      item.quality -= 2;
-    } else if (item.quality > 0) {
-      item.quality -= 1;
+  updateStandardItem(item) {
+    const that = this;
+    if (item.sellIn <= 0 && item.quality >= that.PAST_SELL_IN_DECREMENT) {
+      that.decreaseQualityBy(that.PAST_SELL_IN_DECREMENT, item);
+    } else if (item.quality > that.LOWER_LIMIT) {
+      that.decreaseQualityBy(that.STANDARD_DECREMENT, item);
     }
   }
-  agedBrieUpdate(item) {
-    if (item.quality < 50) { item.quality += 1; }
+  updateAgedBrie(item) {
+    const that = this;
+    if (item.quality < that.UPPER_LIMIT) { that.increaseQualityBy(that.STANDARD_INCREMENT, item); }
   }
-  backstagePassUpdate(item) {
-    if (item.sellIn <= 0) return item.quality = 0;
-
-    if (item.quality <= 49) { item.quality += 1; }
-    if (item.sellIn <= 10 && item.quality <= 49) { item.quality += 1; } 
-    if (item.sellIn <= 5 && item.quality <= 49) { item.quality += 1; }
-  }
-  conjuredItemUpdate(item) {
-    if ((item.quality >= 4) && (item.sellIn <= 0)) {
-      item.quality -= 4;
-    } else if (item.quality >= 2) {
-      item.quality -= 2;
-    } else if (item.quality === 1) {
-      item.quality = 0;
+  updateBackstagePass(item) {
+    const that = this;
+    if (item.sellIn <= 0) return item.quality = that.LOWER_LIMIT;
+    if (item.quality < that.UPPER_LIMIT) { that.increaseQualityBy(that.STANDARD_INCREMENT, item); }
+    if (item.sellIn <= that.BACKSTAGE_PASS_SELL_IN_BAND_ONE && item.quality < that.UPPER_LIMIT) { 
+      that.increaseQualityBy(that.STANDARD_INCREMENT, item);
+    } 
+    if (item.sellIn <= that.BACKSTAGE_PASS_SELL_IN_BAND_TWO && item.quality < that.UPPER_LIMIT) {
+      that.increaseQualityBy(that.STANDARD_INCREMENT, item);
     }
+  }
+  updateConjuredItem(item) {
+    const that = this;
+    if (item.sellIn <= 0 && item.quality >= that.CONJURED_PAST_SELL_IN_DECREMENT) {
+      that.decreaseQualityBy((that.CONJURED_PAST_SELL_IN_DECREMENT), item);
+    } else if (item.quality >= that.CONJURED_STANDARD_DECREMENT) {
+      that.decreaseQualityBy((that.CONJURED_STANDARD_DECREMENT), item);
+    } else {
+      item.quality = that.LOWER_LIMIT;
+    }
+  }
+  decreaseQualityBy(decrement, item) {
+    item.quality -= decrement;
+  }
+  increaseQualityBy(increment, item) {
+    item.quality += increment;
   }
 }
 

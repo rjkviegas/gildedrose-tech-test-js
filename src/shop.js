@@ -13,13 +13,13 @@ class Shop {
       if (that.itemIdentifier.isItem('Sulfuras, Hand of Ragnaros', item)) return item
 
       if (that.itemIdentifier.isConjuredItem(item)) {
-        that.itemQualityUpdater.conjuredItemUpdate(item);
+        that.itemQualityUpdater.updateConjuredItem(item);
       } else if (that.itemIdentifier.isNormalItem(item)) {
-        that.itemQualityUpdater.normalItemUpdate(item);
+        that.itemQualityUpdater.updateStandardItem(item);
       } else if (that.itemIdentifier.isItem('Aged Brie', item)) {
-        that.itemQualityUpdater.agedBrieUpdate(item);
+        that.itemQualityUpdater.updateAgedBrie(item);
       } else if (that.itemIdentifier.isItem('Backstage passes to a TAFKAL80ETC concert', item)) {
-        that.itemQualityUpdater.backstagePassUpdate(item);
+        that.itemQualityUpdater.updateBackstagePass(item);
       }
       item.sellIn -= 1;
     })
